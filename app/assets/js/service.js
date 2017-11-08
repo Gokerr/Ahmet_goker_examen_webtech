@@ -23,11 +23,7 @@ angular.module('App')
 
                         q.resolve(array);
 
-
-
                     });
-
-
 
                 return q.promise;
 
