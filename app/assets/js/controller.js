@@ -8,7 +8,9 @@ angular.module('App')
 
 
     $scope.movies = function () {
-        studentensrv.getAllCategories($scope.movieName);
+        $scope.categories =studentensrv.getAllCategories($scope.movieName).then(function (info) {
+            $scope.categories =info;
+        })
     }
 
 

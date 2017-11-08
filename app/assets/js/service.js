@@ -6,16 +6,20 @@ angular.module('App')
 
         return {
             getAllCategories: function (movieName) {
-                console.log(movieName);
-                var q = $q.defer();
-                var cat_name = "";
-                $http.get("http://www.theimdbapi.org/api/find/person?name="+movieName)
-                    .success(function (data) {
-                        console.log(data);
-                        var arr = data.rows;
 
-                        q.resolve(cat_name);
+                var q = $q.defer();
+                var array = "";
+
+                $http.get("http://www.theimdbapi.org/api/find/person?name="+movieName)
+                    .success(function (response) {
+                        console.log(response);
+
+                        for (var i = 0; i < response.length; i++) {
+                            array = response[i].filmography.actor;
+                        }
+                        q.resolve(array);
                     });
+
                 return q.promise;
             },
 
