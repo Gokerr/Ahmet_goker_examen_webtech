@@ -10,8 +10,12 @@ angular.module('App')
     $scope.movies = function () {
         $scope.categories =studentensrv.getAllCategories($scope.movieName).then(function (info) {
             $scope.categories =info;
+            studentensrv.postLikes($scope.movieName,$scope.categories);
         })
+
     }
+
+
 
 
 
